@@ -8,9 +8,6 @@
 import pymongo
 
 
-class Covid19Pipeline(object):
-    def process_item(self, item, spider):
-        return item
 
 
 class MongoPipeline(object):

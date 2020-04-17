@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'COVID19.spiders'
 #USER_AGENT = 'COVID19 (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -52,9 +52,9 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'COVID19.middlewares.Covid19DownloaderMiddleware': 543,
-# }
+DOWNLOADER_MIDDLEWARES = {
+   'COVID19.middlewares.SeleniumMiddelware': 543,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -90,9 +90,12 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 ITEM_PIPELINES = {
-    'COVID19.pipelines.Covid19Pipeline': 300,
     'COVID19.pipelines.MongoPipeline': 300
 }
 
 MONGO_URI = 'localhost'
 MONGO_DB = 'COVID19'
+
+SELENIUM_TIMEOUT = 20
+
+PHANTOMJS_SERVICE_ARGS = ['--load-images=false', '--disk-cache=true']
