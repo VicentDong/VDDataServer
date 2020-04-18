@@ -13,6 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from scrapy.http import HtmlResponse
 from logging import getLogger
+from time import sleep
 
 class SeleniumMiddelware():
     def __init__(self,timeout=None,service_args=[]):
@@ -28,9 +29,17 @@ class SeleniumMiddelware():
 
     def process_request(self,request,spider):
         self.logger.debug('PhantomJs is Starting')
+        page = request.meta.get('page',1)
         try:
+            # 访问URL
             self.browser.get(request.url)
-            self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR,'#nationTable')))
+            
+            # 等待爬取的元素的加载
+            if page == 0:
+                self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR,'#listWraper')))
+            else:
+                self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR,'#foreignWraper')))
+            # sleep(2)
             return HtmlResponse(url=request.url,body=self.browser.page_source,request=request,encoding='utf-8',status=200)
         except TimeoutException:
             return HtmlResponse(url=request.url,status=500,request=request)

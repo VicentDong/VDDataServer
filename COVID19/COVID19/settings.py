@@ -90,11 +90,18 @@ DOWNLOADER_MIDDLEWARES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 ITEM_PIPELINES = {
-    'COVID19.pipelines.MongoPipeline': 300
+    # 'COVID19.pipelines.MongoPipeline': 300,
+    'COVID19.pipelines.MySqlPipeLine': 300
 }
 
 MONGO_URI = 'localhost'
 MONGO_DB = 'COVID19'
+
+MYSQL_HOST = 'localhost'
+MYSQL_DB = 'covid19'
+MYSQL_USER = 'root'
+MYSQL_PASSWORD = '123456'
+MYSQL_PORT = 3306
 
 SELENIUM_TIMEOUT = 20
 

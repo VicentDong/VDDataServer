@@ -11,7 +11,7 @@ import scrapy
 class Covid19Item(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    collection = table = 'COVID19'
+    collection = table = 'covid19'
     name = scrapy.Field()
     parent = scrapy.Field()
     position = scrapy.Field()
