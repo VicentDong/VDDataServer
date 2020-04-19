@@ -31,7 +31,7 @@ class Covid19Spider(scrapy.Spider):
         for prn in provinces:
             item = Covid19Item()
             prnNode = Selector(text=prn)
-            item['name'] =  prnNode.xpath('//tr[1]/th/p[1]/span//text()').extract_first()
+            item['name'] =  prnNode.xpath('//tr[1]/th/p[1]/span//text()').extract_first().replace('区','')
             item['parent'] = ''
             item['position'] = ''
             item['new'] = prnNode.xpath('//tr[1]/td[1]/p[1]//text()').extract_first()
@@ -44,7 +44,7 @@ class Covid19Spider(scrapy.Spider):
             for city in cityNodes:
                 cityItem = Covid19Item()
                 cityNode = Selector(text=city)
-                cityItem['name'] =  cityNode.xpath('//th/span//text()').extract_first()
+                cityItem['name'] =  cityNode.xpath('//th/span//text()').extract_first().replace('区','')
                 cityItem['parent'] = item['name'] 
                 cityItem['position'] = ''
                 cityItem['new'] = cityNode.xpath('//td[1]//text()').extract_first()
