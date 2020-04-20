@@ -14,7 +14,6 @@ class Covid19Item(scrapy.Item):
     collection = table = 'covid19'
     name = scrapy.Field()
     parent = scrapy.Field()
-    position = scrapy.Field()
     new = scrapy.Field()
     now = scrapy.Field()
     total = scrapy.Field()
