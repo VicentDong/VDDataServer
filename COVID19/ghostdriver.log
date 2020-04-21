@@ -1,50 +1,71 @@
-[INFO  - 2020-04-21T15:08:28.304Z] GhostDriver - Main - running on port 56972
-[INFO  - 2020-04-21T15:08:32.663Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":false,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2020-04-21T15:08:32.663Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.customHeaders:  - {}
-[INFO  - 2020-04-21T15:08:32.663Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-7-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2020-04-21T15:08:32.663Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: f730eb40-83e1-11ea-afca-31e59a1211d9
-[ERROR - 2020-04-21T15:08:32.709Z] RouterReqHand - _handle.error - {"name":"Missing Command Parameter","message":"{\"headers\":{\"Accept\":\"application/json\",\"Accept-Encoding\":\"identity\",\"Content-Length\":\"72\",\"Content-Type\":\"application/json;charset=UTF-8\",\"Host\":\"127.0.0.1:56972\",\"User-Agent\":\"selenium/3.141.0 (python windows)\"},\"httpVersion\":\"1.1\",\"method\":\"POST\",\"post\":\"{\\\"pageLoad\\\": 20000, \\\"sessionId\\\": \\\"f730eb40-83e1-11ea-afca-31e59a1211d9\\\"}\",\"url\":\"/timeouts\",\"urlParsed\":{\"anchor\":\"\",\"query\":\"\",\"file\":\"timeouts\",\"directory\":\"/\",\"path\":\"/timeouts\",\"relative\":\"/timeouts\",\"port\":\"\",\"host\":\"\",\"password\":\"\",\"user\":\"\",\"userInfo\":\"\",\"authority\":\"\",\"protocol\":\"\",\"source\":\"/timeouts\",\"queryKey\":{},\"chunks\":[\"timeouts\"]},\"urlOriginal\":\"/session/f730eb40-83e1-11ea-afca-31e59a1211d9/timeouts\"}","line":546,"sourceURL":"phantomjs://code/session_request_handler.js","stack":"_postTimeout@phantomjs://code/session_request_handler.js:546:73\n_handle@phantomjs://code/session_request_handler.js:148:25\n_reroute@phantomjs://code/request_handler.js:61:20\n_handle@phantomjs://code/router_request_handler.js:78:46"}
+[INFO  - 2020-04-21T15:25:06.466Z] GhostDriver - Main - running on port 58403
+[INFO  - 2020-04-21T15:25:10.986Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":false,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2020-04-21T15:25:10.986Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.customHeaders:  - {}
+[INFO  - 2020-04-21T15:25:10.986Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-7-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2020-04-21T15:25:10.986Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 4a3d1280-83e4-11ea-8812-39ab761d37c5
+[ERROR - 2020-04-21T15:25:11.003Z] RouterReqHand - _handle.error - {"name":"Missing Command Parameter","message":"{\"headers\":{\"Accept\":\"application/json\",\"Accept-Encoding\":\"identity\",\"Content-Length\":\"72\",\"Content-Type\":\"application/json;charset=UTF-8\",\"Host\":\"127.0.0.1:58403\",\"User-Agent\":\"selenium/3.141.0 (python windows)\"},\"httpVersion\":\"1.1\",\"method\":\"POST\",\"post\":\"{\\\"pageLoad\\\": 20000, \\\"sessionId\\\": \\\"4a3d1280-83e4-11ea-8812-39ab761d37c5\\\"}\",\"url\":\"/timeouts\",\"urlParsed\":{\"anchor\":\"\",\"query\":\"\",\"file\":\"timeouts\",\"directory\":\"/\",\"path\":\"/timeouts\",\"relative\":\"/timeouts\",\"port\":\"\",\"host\":\"\",\"password\":\"\",\"user\":\"\",\"userInfo\":\"\",\"authority\":\"\",\"protocol\":\"\",\"source\":\"/timeouts\",\"queryKey\":{},\"chunks\":[\"timeouts\"]},\"urlOriginal\":\"/session/4a3d1280-83e4-11ea-8812-39ab761d37c5/timeouts\"}","line":546,"sourceURL":"phantomjs://code/session_request_handler.js","stack":"_postTimeout@phantomjs://code/session_request_handler.js:546:73\n_handle@phantomjs://code/session_request_handler.js:148:25\n_reroute@phantomjs://code/request_handler.js:61:20\n_handle@phantomjs://code/router_request_handler.js:78:46"}
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:37.786Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
+[ERROR - 2020-04-21T15:25:14.679Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:37.787Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - stack:
+[ERROR - 2020-04-21T15:25:14.679Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - stack:
   error (https://mat1.gtimg.com/www/js/emonitor/index_20200103.js:1)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:37.787Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
+[ERROR - 2020-04-21T15:25:14.680Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:37.787Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - stack:
+[ERROR - 2020-04-21T15:25:14.680Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - stack:
   error (https://mat1.gtimg.com/www/js/emonitor/index_20200103.js:1)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:37.788Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
+[ERROR - 2020-04-21T15:25:14.680Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:37.788Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - stack:
+[ERROR - 2020-04-21T15:25:14.680Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - stack:
   error (https://mat1.gtimg.com/www/js/emonitor/index_20200103.js:1)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:37.856Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
+[ERROR - 2020-04-21T15:25:14.681Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:37.856Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - stack:
+[ERROR - 2020-04-21T15:25:14.681Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - stack:
   error (https://mat1.gtimg.com/www/js/emonitor/index_20200103.js:1)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:37.856Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
+[ERROR - 2020-04-21T15:25:14.682Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:37.857Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - stack:
+[ERROR - 2020-04-21T15:25:14.682Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - stack:
   error (https://mat1.gtimg.com/www/js/emonitor/index_20200103.js:1)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:44.036Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - msg: TypeError: null is not an object (evaluating 't.style')
+[ERROR - 2020-04-21T15:25:14.682Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:44.036Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - stack:
+[ERROR - 2020-04-21T15:25:14.682Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - stack:
+  error (https://mat1.gtimg.com/www/js/emonitor/index_20200103.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-04-21T15:25:14.746Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-04-21T15:25:14.746Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - stack:
+  error (https://mat1.gtimg.com/www/js/emonitor/index_20200103.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-04-21T15:25:14.747Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 't.getAttribute')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-04-21T15:25:14.747Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - stack:
+  error (https://mat1.gtimg.com/www/js/emonitor/index_20200103.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-04-21T15:25:21.404Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - msg: TypeError: null is not an object (evaluating 't.style')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-04-21T15:25:21.404Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - stack:
   A (https://mat1.gtimg.com/news/feiyanarea/app.605dc8f9.js:1)
   a (https://mat1.gtimg.com/news/feiyanarea/app.605dc8f9.js:1)
   (anonymous function) (https://mat1.gtimg.com/news/feiyanarea/app.605dc8f9.js:1)
@@ -64,10 +85,10 @@
   (anonymous function) (https://mat1.gtimg.com/yslp/yyh5/mapview/libs/createjs-2015.11.26.min.js:16)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:44.037Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - msg: TypeError
+[ERROR - 2020-04-21T15:25:21.405Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - msg: TypeError
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-04-21T15:08:44.037Z] Session [f730eb40-83e1-11ea-afca-31e59a1211d9] - page.onError - stack:
+[ERROR - 2020-04-21T15:25:21.405Z] Session [4a3d1280-83e4-11ea-8812-39ab761d37c5] - page.onError - stack:
   K (https://mat1.gtimg.com/yslp/yyh5/mapview/libs/createjs-2015.11.26.min.js:14)
   (anonymous function) (https://mat1.gtimg.com/yslp/yyh5/mapview/libs/createjs-2015.11.26.min.js:14)
   (anonymous function) (https://mat1.gtimg.com/yslp/yyh5/mapview/libs/createjs-2015.11.26.min.js:14)
