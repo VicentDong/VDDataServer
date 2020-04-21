@@ -4,24 +4,24 @@ from COVID19.items import Covid19Item
 from scrapy.selector import Selector
 from time import sleep
 
+
 class Covid19Spider(scrapy.Spider):
     name = 'covid19spider'
     allowed_domains = ['news.qq.com']
     start_urls = ['https://news.qq.com/']
 
-    dataType = 0
-
     def start_requests(self):
-        # url = "https://news.qq.com/zt2020/page/feiyan.htm#/global?ct=United%20States&nojump=1"
-        # yield scrapy.Request(url, callback=self.parse_Outsee,meta={'page':0})
-        urls = ["https://news.qq.com/zt2020/page/feiyan.htm#/?ct=United%20States&nojump=1","https://news.qq.com/zt2020/page/feiyan.htm#/global?ct=United%20States&nojump=1"]
-        
+        # 定义要爬取的页面列表
+        urls = ["https://news.qq.com/zt2020/page/feiyan.htm#/?ct=United%20States&nojump=1",
+                "https://news.qq.com/zt2020/page/feiyan.htm#/global?ct=United%20States&nojump=1"]
+        # 循环发送请求
         for i in range(len(urls)):
             if i == 0:
-                yield scrapy.Request(urls[i],callback=self.parse_China,meta={'page':i},dont_filter=True)
+                # 执行中国疫情页面的parer
+                yield scrapy.Request(urls[i], callback=self.parse_China, meta={'page': i}, dont_filter=True)
             else:
-                yield scrapy.Request(urls[i], callback=self.parse_Outsee,meta={'page':i},dont_filter=True)
-       
+                 # 执行海外疫情页面的parer
+                yield scrapy.Request(urls[i], callback=self.parse_Outsee, meta={'page': i}, dont_filter=True)
 
     # 疫情 中国
     def parse_China(self, response):
@@ -48,13 +48,13 @@ class Covid19Spider(scrapy.Spider):
             item['total'] = prnNode.xpath('//tr[1]/td[2]/p[1]//text()').extract_first().strip()
             item['cure'] = prnNode.xpath('//tr[1]/td[3]/p[1]//text()').extract_first().strip()
             item['death'] = prnNode.xpath('//tr[1]/td[4]/p[1]//text()').extract_first().strip()
-            item['time'] = chinaItem['time']
-            
+            item['time'] = chinaItem['time']           
             # 城市
             cityNodes = prnNode.xpath('//*[@class="city"]').extract()
             for city in cityNodes:
                 cityItem = Covid19Item()
                 cityNode = Selector(text=city)
+
                 cityItem['name'] =  cityNode.xpath('//th/span//text()').extract_first().replace('区','').strip()
                 cityItem['parent'] = item['name'] 
                 cityItem['new'] = ''
@@ -65,7 +65,7 @@ class Covid19Spider(scrapy.Spider):
                 cityItem['time'] = chinaItem['time']
                 yield cityItem
             yield item
-        
+
     # 海外
     def parse_Outsee(self,response):
         # 海外 
@@ -93,4 +93,3 @@ class Covid19Spider(scrapy.Spider):
             item['death'] = countryNode.xpath('//tr[1]/td[4]//text()').extract_first().strip()
             item['time'] = globeItem['time']
             yield item
-        

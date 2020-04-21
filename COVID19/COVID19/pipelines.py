@@ -9,7 +9,6 @@ import pymongo
 import pymysql
 
 
-
 class MongoPipeline(object):
     def __init__(self, mongo_uri, mongo_db):
         self.mongo_uri = mongo_uri
@@ -35,15 +34,15 @@ class MongoPipeline(object):
 
 
 class MySqlPipeLine(object):
-    def __init__(self,host,database,user,password,port):
+    def __init__(self, host, database, user, password, port):
         self.host = host
         self.database = database
         self.user = user
         self.password = password
         self.port = port
-    
+
     @classmethod
-    def from_crawler(cls,crawler):
+    def from_crawler(cls, crawler):
         return cls(
             host=crawler.settings.get('MYSQL_HOST'),
             database=crawler.settings.get('MYSQL_DB'),
@@ -51,26 +50,28 @@ class MySqlPipeLine(object):
             password=crawler.settings.get('MYSQL_PASSWORD'),
             port=crawler.settings.get('MYSQL_PORT')
         )
-    
-    def open_spider(self,spider):
-        self.db = pymysql.connect(self.host,self.user,self.password,self.database,charset='utf8',port=self.port)
+
+    def open_spider(self, spider):
+        self.db = pymysql.connect(
+            self.host, self.user, self.password, self.database, charset='utf8', port=self.port)
         self.cursor = self.db.cursor()
 
-    def close_spider(self,spider):
+    def close_spider(self, spider):
         self.db.close()
-    
-    def process_item(self,item,spider):
+
+    def process_item(self, item, spider):
         data = dict(item)
         keys = ', '.join(data.keys())
         values = ', '.join(['%s'] * len(data))
-        sql = 'insert into {table}({keys}) values ({values}) on duplicate key update'.format(table=item.table,keys=keys,values=values) 
+        sql = 'insert into {table}({keys}) values ({values}) on duplicate key update'.format(
+            table=item.table, keys=keys, values=values)
         update = ','.join([" {key}=%s".format(key=key) for key in data])
         sql += update
         try:
-            if self.cursor.execute(sql,tuple(data.values())*2):
+            if self.cursor.execute(sql, tuple(data.values())*2):
                 print('successful')
                 self.db.commit()
-        except:
-            print('Failed')
+        except pymysql.MySQLError as e:
+            print(e)
             self.db.rollback()
         return item
