@@ -27,9 +27,13 @@ async def check_permit(websocket):
 
 # 接收客户端消息并处理，这里只是简单把客户端发来的返回回去
 async def send(websocket):
-    await send_data(websocket)
+    await send_overviewData(websocket)
+    await send_rankData(websocket)
+    await send_markerData(websocket)
     while True:
-        await send_data(websocket)
+        await send_overviewData(websocket)
+        await send_rankData(websocket)
+        await send_markerData(websocket)
         time.sleep(interval)
 
 # 服务器端主逻辑
@@ -38,13 +42,26 @@ async def main_logic(websocket, path):
     # await recv_msg(websocket)
     await send(websocket)
 
-async def send_data(websocket):
+async def send_markerData(websocket):
     access = MysqlDataAccess()
-    data = access.getData()
+    data = {'marker': access.getData()}
     logging.info('数据获取完成')
     await websocket.send(json.dumps(data))
     logging.info('信息发送中')
 
+async def send_overviewData(websocket):
+    access = MysqlDataAccess()
+    data = {'overview': access.getOverviewData()}
+    logging.info('数据获取完成')
+    await websocket.send(json.dumps(data))
+    logging.info('信息发送中')
+
+async def send_rankData(websocket):
+    access = MysqlDataAccess()
+    data = {'rank': access.getRankData()}
+    logging.info('数据获取完成')
+    await websocket.send(json.dumps(data))
+    logging.info('信息发送中')
 
 start_server = websockets.serve(main_logic, 'localhost', 9998)
 asyncio.get_event_loop().run_until_complete(start_server)

@@ -21,3 +21,6 @@ npm-debug.log*
 *.sw?
 *.pyc
 *.log
+*.pyc
+*.pyc
+*.log

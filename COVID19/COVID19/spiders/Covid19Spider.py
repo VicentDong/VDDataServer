@@ -27,23 +27,37 @@ class Covid19Spider(scrapy.Spider):
     def parse_China(self, response):
         # 中国
         chinaItem = Covid19Item()
-        chinaItem['name'] =  '中国'.strip()
-        chinaItem['parent'] = '全球'.strip()
-        chinaItem['new'] = response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[3]/div[1]/div[1]/span//text()').extract_first().strip()
+        chinaItem['name'] =  '中国'
+        chinaItem['parent'] = '全球'
+        chinaNew =response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[3]/div[1]/div[1]/span//text()').extract_first().strip()
+        chinaItem['new'] = ''.join(list(filter(str.isdigit,chinaNew)))
         chinaItem['now'] =  response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[3]/div[4]/div[2]//text()').extract_first().strip()
         chinaItem['total'] = response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[3]/div[1]/div[2]//text()').extract_first().strip()
         chinaItem['cure'] = response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[3]/div[2]/div[2]//text()').extract_first().strip()
         chinaItem['death'] = response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[3]/div[3]/div[2]//text()').extract_first().strip()
         chinaItem['time'] = response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[2]/p/span//text()').extract_first().strip()
         yield chinaItem
+
+        chinaItem1 = Covid19Item()
+        chinaItem1['name'] =  '国内'
+        chinaItem1['parent'] = '中国'
+        chinaNew =response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[3]/div[1]/div[1]/span//text()').extract_first().strip()
+        chinaItem1['new'] = ''.join(list(filter(str.isdigit,chinaNew)))
+        chinaItem1['now'] =  response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[3]/div[4]/div[2]//text()').extract_first().strip()
+        chinaItem1['total'] = response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[3]/div[1]/div[2]//text()').extract_first().strip()
+        chinaItem1['cure'] = response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[3]/div[2]/div[2]//text()').extract_first().strip()
+        chinaItem1['death'] = response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[3]/div[3]/div[2]//text()').extract_first().strip()
+        chinaItem1['time'] = response.xpath('//*[@id="app"]/div[2]/div[3]/div[1]/div[2]/p/span//text()').extract_first().strip()
+        yield chinaItem1
         # 省份
         provinces = response.xpath('//*[@id="listWraper"]/table[2]/tbody').extract()
         for prn in provinces:
             item = Covid19Item()
             prnNode = Selector(text=prn)
             item['name'] =  prnNode.xpath('//tr[1]/th/p[1]/span//text()').extract_first().replace('区','').strip()
-            item['parent'] = '中国'.strip()
-            item['new'] = prnNode.xpath('//tr[1]/td[2]/p[2]//text()').extract_first().strip()
+            item['parent'] = '中国'
+            prnNew =  prnNode.xpath('//tr[1]/td[2]/p[2]//text()').extract_first().strip()
+            item['new'] = ''.join(list(filter(str.isdigit,prnNew)))
             item['now'] =  prnNode.xpath('//tr[1]/td[1]/p[1]//text()').extract_first().strip()
             item['total'] = prnNode.xpath('//tr[1]/td[2]/p[1]//text()').extract_first().strip()
             item['cure'] = prnNode.xpath('//tr[1]/td[3]/p[1]//text()').extract_first().strip()
@@ -72,7 +86,8 @@ class Covid19Spider(scrapy.Spider):
         globeItem = Covid19Item()
         globeItem['name'] =  '海外'
         globeItem['parent'] = '全球'
-        globeItem['new'] = response.xpath('//*[@id="foreignList"]/div[1]/div[3]/div[2]/p/span//text()').extract_first().strip()
+        globeNew = response.xpath('//*[@id="foreignList"]/div[1]/div[3]/div[2]/p/span//text()').extract_first().strip()
+        globeItem['new'] =  ''.join(list(filter(str.isdigit,globeNew)))
         globeItem['now'] = response.xpath('//*[@id="foreignList"]/div[1]/div[3]/div[1]/div[1]//text()').extract_first().strip()
         globeItem['total'] = response.xpath('//*[@id="foreignList"]/div[1]/div[3]/div[2]/div[1]//text()').extract_first().strip()
         globeItem['cure'] = response.xpath('//*[@id="foreignList"]/div[1]/div[3]/div[3]/div[1]//text()').extract_first().strip()
@@ -86,7 +101,8 @@ class Covid19Spider(scrapy.Spider):
             item = Covid19Item()
             item['name'] =  countryNode.xpath('//tr[1]/th/span//text()').extract_first().strip()
             item['parent'] = globeItem['name'] 
-            item['new'] = countryNode.xpath('//tr[1]/td[1]//text()').extract_first().strip()
+            countryNew = countryNode.xpath('//tr[1]/td[1]//text()').extract_first().strip()
+            item['new'] =''.join(list(filter(str.isdigit,countryNew)))
             item['now'] = ''.strip()
             item['total'] = countryNode.xpath('//tr[1]/td[2]//text()').extract_first().strip()
             item['cure'] = countryNode.xpath('//tr[1]/td[2]//text()').extract_first().strip()

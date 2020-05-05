@@ -34,6 +34,21 @@ class MysqlDataAccess:
         except pymysql.MySQLError as e:
             print(e.args)
 
+    def getOverviewData(self):
+        sql_query ='select SUM(IFNULL(new,0)) as new , SUM(now) as now,SUM(total) as total,SUM(cure) as cure,SUM(death) as death,MIN(time) as time from covid19 where parent = "全球"'
+        try:
+            self.cursor.execute(sql_query)
+            return self.sql_fetch_json()
+        except pymysql.MySQLError as e:
+            print(e.args)
+
+    def getRankData(self):
+        sql_query = 'select *  from covid19 where parent in ("国内","海外")  order by  CAST(new AS UNSIGNED) DESC LIMIT 3 '
+        try:
+            self.cursor.execute(sql_query)
+            return self.sql_fetch_json()
+        except pymysql.MySQLError as e:
+            print(e.args)
 
     def sql_fetch_json(self):
         keys = []
